@@ -27,7 +27,7 @@ fun getOrFetchInputDataAsString(day: Int = 1): String {
         f.writeBytes(fetchInputData(day).toByteArray())
     }
 
-    return f.readText()
+    return f.readText().trimEnd()
 }
 
 fun getOrFetchInputData(day: Int = 1): List<String> {
@@ -47,5 +47,5 @@ fun getTestInput(day: Int, file: String): List<String> {
 }
 
 fun getTestInputAsString(day: Int, file: String): String {
-    return File("src\\day${day.toString().padStart(2, '0')}", "$file.txt").readText()
+    return File("src\\day${day.toString().padStart(2, '0')}", "$file.txt").readText().trimEnd()
 }
