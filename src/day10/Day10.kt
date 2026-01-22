@@ -138,9 +138,8 @@ fun main() {
             buttons = buttons,
             patterns = lights
         )
-        val cache =
-            lights.values.flatten().groupBy({ it.first }, { it.second }).mapValues { (_, values) -> values.min() }
-                .toMutableMap()
+        val cache = mutableMapOf<Joltage, Int>()
+        cache[List(joltage.size) { 0 }] = 0
         val res = configuration.solveJoltage(cache = cache)
         res
     }
@@ -149,8 +148,8 @@ fun main() {
     val test1 = part1(testInput)
     check(test1 == 7) { "Got $test1" }
 
-//    val test2 = part2(testInput)
-//    check(test2 == 33) { "Got $test2" }
+    val test2 = part2(testInput)
+    check(test2 == 33) { "Got $test2" }
 
     val input = getOrFetchInputData(10)
     println(part1(input))
